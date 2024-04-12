@@ -30,4 +30,8 @@ public class Game {
 
     @ManyToMany(mappedBy = "games")
     private List<Player> players;
+
+    public Game(String type) {
+        this.type = type;
+    }
 }

@@ -4,7 +4,9 @@ import com.example.demo.games.Game;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
@@ -19,8 +21,8 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
-    private String name;
+    @Column(unique = true)
+    private String userName;
 
     @Column
     private int points;
@@ -38,4 +40,11 @@ public class Player {
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private List<Game> games;
+
+    public Player(String userName) {
+        this.userName = userName;
+        this.gamesPlayed = 0;
+        this.wins = 0;
+        this.points = 0;
+    }
 }

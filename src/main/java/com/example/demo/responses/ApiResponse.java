@@ -11,7 +11,7 @@ public class ApiResponse<T> {
     protected T data;
 
     public void set(T data){
-        this.status = "sucess";
+        this.status = "success";
         this.data = data;
     }
 
