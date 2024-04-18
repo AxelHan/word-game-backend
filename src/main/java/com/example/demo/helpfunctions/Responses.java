@@ -15,7 +15,7 @@ public class Responses {
 
     public static ResponseEntity<ApiResponse<?>> notFound(String object){
         ErrorResponse error = new ErrorResponse();
-        error.set("No" + object + " with that id were found");
+        error.set("No " + object + " with that id were found");
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }

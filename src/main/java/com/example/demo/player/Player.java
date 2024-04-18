@@ -21,8 +21,11 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true)
-    private String userName;
+    @Column(unique = true, length = 8)
+    private String username;
+
+    @Column(length = 1000)
+    private String imgUrl;
 
     @Column
     private int points;
@@ -42,7 +45,7 @@ public class Player {
     private List<Game> games;
 
     public Player(String userName) {
-        this.userName = userName;
+        this.username = userName;
         this.gamesPlayed = 0;
         this.wins = 0;
         this.points = 0;

@@ -49,6 +49,18 @@ public class PlayerController {
         return new ResponseEntity<>(playerResponse, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<?>> deletePlayerById(@PathVariable int id){
+        Player playerToDelete = ApiHelpers.getById(id, playerRepository);
+        if(playerToDelete == null){
+            return Responses.notFound("player");
+        }
+        playerRepository.delete(playerToDelete);
+        PlayerResponse playerResponse = new PlayerResponse();
+        playerResponse.set(playerToDelete);
+        return new ResponseEntity<>(playerResponse, HttpStatus.OK);
+    }
+
     @DeleteMapping
     public ResponseEntity<String>deleteAllPlayers(){
         try {

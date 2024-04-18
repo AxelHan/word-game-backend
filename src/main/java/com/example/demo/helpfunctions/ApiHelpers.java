@@ -12,7 +12,7 @@ public class ApiHelpers {
     }
 
     public static boolean isInvalidPlayer(Player player) {
-        return player.getUserName() == null;
+        return player.getUsername() == null || player.getImgUrl() == null;
     }
 
     public static boolean isInvalidGame(Game game){
