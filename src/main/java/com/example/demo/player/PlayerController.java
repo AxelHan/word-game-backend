@@ -1,6 +1,7 @@
 package com.example.demo.player;
 
 
+import com.example.demo.games.Game;
 import com.example.demo.helpfunctions.ApiHelpers;
 import com.example.demo.helpfunctions.Responses;
 import com.example.demo.responses.ApiResponse;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -55,6 +57,8 @@ public class PlayerController {
         if(playerToDelete == null){
             return Responses.notFound("player");
         }
+
+        playerToDelete.setGames(new ArrayList<>());
         playerRepository.delete(playerToDelete);
         PlayerResponse playerResponse = new PlayerResponse();
         playerResponse.set(playerToDelete);
